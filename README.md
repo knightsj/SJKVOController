@@ -7,7 +7,7 @@ A KVO implementation by using block, which is inspired by [ImplementKVO](https:/
 2. ``#import "NSObject+SJKVOController.h"``
 3. add observer and key or keys :
 
-#### add in one single time:
+#### add together:
 ```objc
 [self.model sj_addObserver:self forKeys:keys withBlock:^(id observedObject, NSString *key, id oldValue, id newValue) {
         
@@ -27,7 +27,7 @@ A KVO implementation by using block, which is inspired by [ImplementKVO](https:/
     }];
 ```
 
-#### add more than once
+#### add separately:
 
 ```objc
 [self.model sj_addObserver:self forKey:@"number" withBlock:^(id observedObject, NSString *key, id oldValue, id newValue) {
@@ -36,15 +36,16 @@ A KVO implementation by using block, which is inspired by [ImplementKVO](https:/
             self.numberLabel.text = [NSString stringWithFormat:@"%@",newValue];
         });
         
-    }];
+}];
     
-    [self.model sj_addObserver:self forKey:@"color" withBlock:^(id observedObject, NSString *key, id oldValue, id newValue) {
+    
+[self.model sj_addObserver:self forKey:@"color" withBlock:^(id observedObject, NSString *key, id oldValue, id newValue) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
             self.numberLabel.backgroundColor = newValue;
         });
         
-    }];
+}];
 ```
 
 #### Remove observer and keys:
