@@ -61,6 +61,12 @@ A KVO implementation by using block, which is inspired by [ImplementKVO](https:/
 }
 ```
 
+After removing observers, if there is no observer which is observing this object's property, we'll get output like this:
+
+```objc
+SJKVOController[80499:4242749] SJKVOLog:There is no observers obserbing object:<Model: 0x60000003b700>
+```
+
 #### List all observers and keys
 
 ```objc
@@ -69,6 +75,15 @@ A KVO implementation by using block, which is inspired by [ImplementKVO](https:/
     [self.model sj_listAllObservers];
 }
 ```
+
+output:
+
+```objc
+SJKVOController[80499:4242749] SJKVOLog:==================== Start Listing All Observers: ==================== 
+SJKVOController[80499:4242749] SJKVOLog:observer item:{observer: <ViewController: 0x7fa1577054f0> | key: color | setter: setColor:}
+SJKVOController[80499:4242749] SJKVOLog:observer item:{observer: <ViewController: 0x7fa1577054f0> | key: number | setter: setNumber:}
+```
+
 ## Demo presentation:
 ![](http://oih3a9o4n.bkt.clouddn.com/SJKVOController.gif)
 
