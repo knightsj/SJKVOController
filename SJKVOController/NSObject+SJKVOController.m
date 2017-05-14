@@ -72,11 +72,10 @@ static const char SJKVOObservers;
         NSMutableSet *newObservers = [[NSMutableSet alloc] initWithCapacity:5];
         objc_setAssociatedObject(self, &SJKVOObservers, newObservers, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         
-        if (observers.count>0) {
-            for (SJKVOObserverItem *item in observers) {
-                [self KVOConfigurationWithObserver:item.observer key:item.key block:item.block kvoClass:KVOClass setterSelector:item.setterSelector setterMethod:setterMethod];
-            }
+        for (SJKVOObserverItem *item in observers) {
+            [self KVOConfigurationWithObserver:item.observer key:item.key block:item.block kvoClass:KVOClass setterSelector:item.setterSelector setterMethod:setterMethod];
         }
+    
     }
     
     //ignore same observer and key:if the observer and key are same with saved observerItem,we should not add them one more time

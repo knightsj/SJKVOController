@@ -23,6 +23,7 @@
     
     [super viewDidLoad];
      self.model = [[Model alloc] init];
+    
 }
 
 - (IBAction)updateNumber:(UIButton *)sender {
