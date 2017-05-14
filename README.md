@@ -86,7 +86,33 @@ SJKVOController[80499:4242749] SJKVOLog:observer item:{observer: <ViewController
 ```
 
 ## Demo presentation:
-![](http://oih3a9o4n.bkt.clouddn.com/SJKVOController.gif)
+
+### add observation of 'number' and 'color'
+![同时观察颜色和数字的变化](http://oih3a9o4n.bkt.clouddn.com/sjkvocontrolllergif1.gif)
+
+### remove observation of 'number'
+```objc
+- (IBAction)removeAllObservingItems:(UIButton *)sender {
+    [self.model sj_removeObserver:self forKey:@"number"];
+}
+```
+
+So, only 'color' property is observed:
+![只观察颜色的变化](http://oih3a9o4n.bkt.clouddn.com/sjkvocontrolllergif2.gif)
+
+### remove observation of 'number' and 'color'
+
+```objc
+- (IBAction)removeAllObservingItems:(UIButton *)sender {
+    
+    [self.model sj_removeObserver:self forKeys:@[@"number",@"color"]];
+}
+```
+
+So, 'color' and 'number' property will not change:
+
+![颜色和数字的变化都不再被观察](http://oih3a9o4n.bkt.clouddn.com/sjkvocontrolllergif3.gif)
+
 
 ## Code presentation:
 
